@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Product } from './product/product.interface';
+import { Order, Product } from './product/product.interface';
 
 const productSchema = new Schema<Product>({
   name: { type: String, required: true },
@@ -20,3 +20,12 @@ const productSchema = new Schema<Product>({
 });
 
 export const ProductModel = model<Product>('Product', productSchema);
+
+const orderSchema = new Schema<Order>({
+  email: { type: String, required: true },
+  productId: { type: String, required: true },
+  price: { type: Number, required: true },
+  quantity: { type: Number, required: true },
+});
+
+export const OrderModel = model<Order>('Order', orderSchema);

@@ -1,5 +1,5 @@
-import { ProductModel } from '../product.model';
-import { Product } from './product.interface';
+import { OrderModel, ProductModel } from '../product.model';
+import { Order, Product } from './product.interface';
 
 const createProductDB = async (product: Product) => {
     const result = await ProductModel.create(product);
@@ -29,10 +29,24 @@ const getProductDeleteFromDB = async (_id: string) => {
     return res;
 };
 
+
+// order services
+const createOrderDB = async (order: Order) => {
+    const result = await OrderModel.create(order);
+    return result;
+};
+
+const getAllOrderFromDB = async () => {
+    const res = await OrderModel.find({}, { '__v': 0, _id: 0 });
+    return res;
+};
+
 export const ProductServices = {
     createProductDB,
     getAllProductFromDB,
     getSingleProductFromDB,
     getSingleProductUpdateFromDB,
-    getProductDeleteFromDB
+    getProductDeleteFromDB,
+    createOrderDB,
+    getAllOrderFromDB
 };

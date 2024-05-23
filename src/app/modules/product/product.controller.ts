@@ -86,11 +86,41 @@ const getProductDelete = async (req: Request, res: Response) => {
 };
 
 
+// order controller
+const createOrder = async (req: Request, res: Response) => {
+    try {
+        const order = req.body;
+        const result = await ProductServices.createOrderDB(order);
+        res.status(200).json({
+            success: true,
+            message: 'Order created successfully!',
+            data: result,
+        });
+    } catch (error) {
+        // console.log(error);
+    }
+};
+
+const getAllOrder = async (req: Request, res: Response) => {
+    try {
+        const result = await ProductServices.getAllOrderFromDB();
+        res.status(200).json({
+            success: true,
+            message: 'Orders fetched successfully!',
+            data: result,
+        });
+    } catch (err) {
+        // console.log(err);
+    }
+};
+
 
 export const ProductController = {
     createProduct,
     getAllProducts,
     getSingleProduct,
     getSingleProductUpdate,
-    getProductDelete
+    getProductDelete,
+    createOrder,
+    getAllOrder
 };
