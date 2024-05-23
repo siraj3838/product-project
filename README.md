@@ -1,0 +1,3 @@
+# This Is Product Project API
+
+To develop the API for this Product project, I adhered to a systematic folder structure. Initially, I set up the server using Mongoose Connect. Following this, I created an interface and subsequently developed a model based on the interface specifications. With the model in place, I crafted a service to align with it and refined the code for better clarity and maintainability. Finally, I implemented the controller and established the necessary routes to complete the API.
